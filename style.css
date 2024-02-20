@@ -1,0 +1,16 @@
+
+  
+fieldset {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    transition: opacity 0.5s ease, visibility 0.5s ease, height 0.5s ease;
+}
+
+fieldset.active {
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+}
+
+  
