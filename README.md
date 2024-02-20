@@ -1,1 +1,4 @@
 # billeterie
+
+En tant que dev full stack vous créerez le formulaire d'inscription et tout le nécessaire front, aussi bien que le traitement et l'enregistrement des données en back. 
+Le site souhaite créer sa propre billetterie plutôt que de passer par un site tiers. Il s'agira de faire une interface pour prendre les réservations des festivaliers, les enregistrer en BDD, et faire en sorte que chacun puisse consulter et modifier certaines choses dans leur réservation ou l'annuler, et que les admins puissent toutes les voir. Le formulaire sera complet, sur plusieurs pages, afin d'affiner les questions auprès des festivaliers et leur proposer la meilleure expérience !
