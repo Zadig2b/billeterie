@@ -1,4 +1,5 @@
 <?php
+require_once './reservation.php';
 
 class Traitement {
     public function traiterDonnees($donnees) {
@@ -12,17 +13,21 @@ class Traitement {
         $email = htmlspecialchars($donnees['email']);
         $telephone = htmlspecialchars($donnees['telephone']);
         $adressePostale = htmlspecialchars($donnees['adressePostale']);
-        
+        $nombrePlaces = $_POST['nombrePlaces'];
+        $tarifReduit = isset($_POST['tarifReduit']) ? $_POST['tarifReduit'] : 'plein tarif'; // Check if it's set
+        $passSelection = $_POST['passSelection'];
         // Faites de même pour les autres champs...
 
         // Vous pouvez maintenant utiliser les variables $nom, $prenom, etc. pour enregistrer les données dans votre base de données
         // ou effectuer toute autre opération nécessaire
 
-        // Exemple d'utilisation de var_dump pour afficher les données nettoyées
-        var_dump($nom, $prenom, $email, $telephone, $adressePostale);
+        var_dump($donnees);
+
+        $reservation = new Reservation();
+        $reservation->enregistrerReservation($nom, $prenom, $email, $telephone, $adressePostale, $nombrePlaces, $tarifReduit, $passSelection);
 
         // Vous pouvez rediriger l'utilisateur après le traitement
-        // header("Location: chemin/vers/votre/page-de-redirection.php");
+        // header("Location: reservation.php");
         exit; // Assurez-vous d'arrêter l'exécution du script après la redirection
     }
 }
