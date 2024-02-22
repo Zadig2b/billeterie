@@ -1,10 +1,11 @@
 <?php 
+session_start(); 
 
     class Reservation {
     private $csvFile = 'database.csv';
 
     public function enregistrerReservation($nom, $prenom, $email, $telephone, $adressePostale, $nombrePlaces, $tarifReduit, $passSelection) {
-        // Nettoyer les données si nécessaire
+
 
         // Créer un tableau avec les données de la réservation
         $reservationData = array(
@@ -18,8 +19,14 @@
             $passSelection,
         );
 
+        $_SESSION['reservationData'] = $reservationData;
+
         // Ajouter la réservation au fichier CSV
         $this->ajouterReservationAuCSV($reservationData);
+
+          // Redirect to success.php
+          header('Location: success.php');
+          exit; 
     }
 
     private function ajouterReservationAuCSV($reservationData) {
@@ -37,8 +44,11 @@
 
         // Fermer le fichier
         fclose($file);
+
+
     }
+
+
 }
 
-// Exemple d'utilisation de la classe Reservation
 $reservation = new Reservation();

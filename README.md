@@ -33,9 +33,15 @@ Vous recevez les données en post,
 - Vous traiterez les données reçues, et lorsque tout le formulaire sera rempli et soumis, alors vous l'enregistrerez dans un fichier CSV.
 
 Une fois que tout est validé, vous renvoyez à l'utilisateur un message récapitulatif avec ses informations choisies, et le total du prix à payer.
+faire ceci dans index.php. ceci doit être fait une fois que ajouterReservationAuCSV a été un succès
+ dans reservation.php ajouter le code necessaire pour faire appel à "displaySuccessMessage" dans index.php, qui exécutera le code responsable pour afficher le message à l'utilisateur. 
+créer la fonction "displaySuccessMessage" dans index.php pour afficher le message à l'utilisateur
 
 - En JS, animer le formulaire pour voir les sections une par une.
+DONE
 - l'enregistrement se fait après vérification et traitement des données reçues.
+DONE
 - l'utilisateur est notifié tout au long de son parcours des éventuelles erreurs ou succès de sa soumission
+DONE
 - Le travail est documenté.
 - le formulaire fonctionnel sera mis en ligne
