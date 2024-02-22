@@ -14,11 +14,13 @@ class Traitement {
         $nombrePlaces = $_POST['nombrePlaces'];
         $tarifReduit = isset($_POST['tarifReduit']) ? $_POST['tarifReduit'] : 'plein tarif'; // Check if it's set
         $passSelection = $_POST['passSelection'];
+        $prix = $_POST['nombrePlaces'];
+        // $PRIX TO UPDATE
 
         var_dump($donnees);
 
         $reservation = new Reservation();
-        $reservation->enregistrerReservation($nom, $prenom, $email, $telephone, $adressePostale, $nombrePlaces, $tarifReduit, $passSelection);
+        $reservation->enregistrerReservation($nom, $prenom, $email, $telephone, $adressePostale, $nombrePlaces, $tarifReduit, $passSelection, $prix);
         exit; 
     }
 }

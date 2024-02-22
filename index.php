@@ -47,19 +47,13 @@
       <label for="pass3jours">Pass 3 jours : 100€</label>
 
 
-      <section id= "tarifReduit-section">
-      <!-- tarifs réduits : à n'afficher que si tarif réduit est sélectionné -->
-      <input type="checkbox" name="passSelection" id="pass1jour">
-      <label for="pass1jour">Pass 1 jour : 25€</label>
-      <input type="checkbox" name="passSelection" id="pass2jours">
-      <label for="pass2jours">Pass 2 jours : 50€</label>
-      <input type="checkbox" name="passSelection" id="pass3jours">
-      <label for="pass3jours">Pass 3 jours : 65€</label>
-      </section>
       <!-- FACULTATIF : ajouter un pass groupe (5 adultes : 150€ / jour) uniquement pass 1 jour -->
 
       <p class="bouton" onclick="suivant('options')">Suivant</p>
     </fieldset>
+
+    <!------------------------------------------- FIN DE LA SECTION RESERVATION  ------------------------------------------------>
+
     <fieldset id="options" class="inactive">
       <legend>Options</legend>
       <h3>Réserver un emplacement de tente : </h3>
@@ -101,6 +95,8 @@
       <p class="bouton" onclick="suivant('coordonnees')">Suivant</p>
     </fieldset>
 
+        <!------------------------------------------- FIN DE LA SECTION OPTIONS  ------------------------------------------------>
+
     <fieldset id="coordonnees" class="inactive">
       <legend>Coordonnées</legend>
         <label for="nom">Nom :</label>
@@ -116,6 +112,8 @@
 
         <input type="submit" name="soumission" class="bouton" value="Réserver">
     </fieldset>
+
+        <!------------------------------------------- FIN DE LA SECTION COORDONNEES  ------------------------------------------------>
 
   </form>
 </body>
