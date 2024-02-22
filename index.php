@@ -21,7 +21,7 @@
       <input type="hidden" name="passSelection" id="passSelection">
 
       <h3>Choisissez votre formule :</h3>
-      <input type="checkbox" name="pass1jour" id="pass1jour" data-price="40">
+      <input type="radio" name="passRadio" id="pass1jour" data-price="40">
       <label for="pass1jour">Pass 1 jour : 40€</label>
 
       <!-- Si case cochée, afficher le choix du jour -->
@@ -34,7 +34,7 @@
         <label for="choixJour3">Pass pour la journée du 03/07</label>
       </section>
 
-      <input type="checkbox" name="pass2jours" id="pass2jours" data-price="70">
+      <input type="radio" name="passRadio" id="pass2jours" data-price="70">
       <label for="pass2jours">Pass 2 jours : 70€</label>
 
 
@@ -47,7 +47,7 @@
         <label for="choixJour23">Pass pour deux journées du 02/07 au 03/07</label>
       </section>
 
-      <input type="checkbox" name="pass3jours" id="pass3jours" data-price="100">
+      <input type="radio" name="passRadio" id="pass3jours" data-price="100">
       <label for="pass3jours">Pass 3 jours : 100€</label>
 
 

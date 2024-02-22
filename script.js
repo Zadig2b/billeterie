@@ -1,24 +1,22 @@
-let pass1jour = document.getElementById('pass1jour')
-pass1jour.addEventListener('change', function(){
-    let section = document.getElementById('pass1jourDate');
-    if(pass1jour.checked){
-        section.style.display = 'flex';
+// Get all radio buttons with the name "passRadio"
+let passRadioButtons = document.querySelectorAll('input[name="passRadio"]');
+
+// Add event listeners to each radio button
+passRadioButtons.forEach(function (radioButton) {
+    radioButton.addEventListener('change', function () {
+        let sectionId = radioButton.id + 'Date';
+        let section = document.getElementById(sectionId);
+
+        if (radioButton.checked) {
+            section.style.display = 'block';
+        } else {
+            section.style.display = 'none';
+        }
 
 
-            } else {
-        section.style.display = 'none';       
-    }
-})
+    });
+});
 
-let pass2jours = document.getElementById('pass2jours')
-pass2jours.addEventListener('change', function(){
-    let section = document.getElementById('pass2joursDate');
-    if(pass2jours.checked){
-        section.style.display = 'block';
-            } else {
-        section.style.display = 'none';       
-    }
-})
 
 document.addEventListener('DOMContentLoaded', function () {
     // Declare variables in a broader scope
