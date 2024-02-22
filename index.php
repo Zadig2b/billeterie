@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<p id="totalPrice">Prix Total : </p>
+
   <form action="traitement.php" id="inscription" method="POST">
     <fieldset id="reservation" class="active">
       <legend>Réservation</legend>
@@ -19,7 +21,7 @@
       <input type="hidden" name="passSelection" id="passSelection">
 
       <h3>Choisissez votre formule :</h3>
-      <input type="checkbox" name="pass1jour" id="pass1jour">
+      <input type="checkbox" name="pass1jour" id="pass1jour" data-price="40">
       <label for="pass1jour">Pass 1 jour : 40€</label>
 
       <!-- Si case cochée, afficher le choix du jour -->
@@ -32,7 +34,7 @@
         <label for="choixJour3">Pass pour la journée du 03/07</label>
       </section>
 
-      <input type="checkbox" name="pass2jours" id="pass2jours">
+      <input type="checkbox" name="pass2jours" id="pass2jours" data-price="70">
       <label for="pass2jours">Pass 2 jours : 70€</label>
 
 
@@ -45,7 +47,7 @@
         <label for="choixJour23">Pass pour deux journées du 02/07 au 03/07</label>
       </section>
 
-      <input type="checkbox" name="pass3jours" id="pass3jours">
+      <input type="checkbox" name="pass3jours" id="pass3jours" data-price="100">
       <label for="pass3jours">Pass 3 jours : 100€</label>
 
 

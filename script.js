@@ -21,28 +21,70 @@ pass2jours.addEventListener('change', function(){
 })
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Add an event listener for "tarifReduit" checkbox change
+    // Declare variables in a broader scope
     let tarifReduitCheckbox = document.getElementById('tarifReduit');
-    tarifReduitCheckbox.addEventListener('change', function () {
-        // Get the corresponding pass elements
-        let pass1jour = document.getElementById('pass1jour');
-        let pass2jours = document.getElementById('pass2jours');
-        let pass3jours = document.getElementById('pass3jours');
+    let pass1jour = document.getElementById('pass1jour');
+    let pass2jours = document.getElementById('pass2jours');
+    let pass3jours = document.getElementById('pass3jours');
+    let nombrePlacesInput = document.getElementById('NombrePlaces');
+    let totalPriceElement = document.getElementById('totalPrice');
 
-        // Check the state of tarifReduit checkbox
-        if (tarifReduitCheckbox.checked) {
-            // Update prices if tarifReduit is checked
-            pass1jour.nextElementSibling.textContent = 'Pass 1 jour : 25€';
-            pass2jours.nextElementSibling.textContent = 'Pass 2 jours : 50€';
-            pass3jours.nextElementSibling.textContent = 'Pass 3 jours : 65€';
-        } else {
-            // Reset prices if tarifReduit is not checked
-            pass1jour.nextElementSibling.textContent = 'Pass 1 jour : 40€';
-            pass2jours.nextElementSibling.textContent = 'Pass 2 jours : 70€';
-            pass3jours.nextElementSibling.textContent = 'Pass 3 jours : 100€';
-        }
+    // Add event listener for "tarifReduit" checkbox change
+    tarifReduitCheckbox.addEventListener('change', updatePrices);
+
+    // Add event listeners for pass checkboxes change
+    [pass1jour, pass2jours, pass3jours].forEach(function (passCheckbox) {
+        passCheckbox.addEventListener('change', updatePrixTotal);
     });
+
+    function updatePrices() {
+        // Get the current prices
+        let prices = tarifReduitCheckbox.checked ? [25, 50, 65] : [40, 70, 100];
+    
+        // Update prices and total
+        [pass1jour, pass2jours, pass3jours].forEach(function (pass, index) {
+            let price = prices[index];
+    
+            // Update data-price attribute
+            pass.setAttribute('data-price', price);
+    
+            // Update displayed prices
+            pass.nextElementSibling.textContent = `Pass ${index + 1} jour(s) : ${price}€`;
+        });
+    
+        updatePrixTotal();
+    }
+    
+
+    function updatePrixTotal() {
+        console.log('updatePrixTotal called'); 
+
+        // Get the number of places
+        let nombrePlaces = parseInt(nombrePlacesInput.value) || 0;
+
+        // Get the selected pass element
+        let selectedPass = [pass1jour, pass2jours, pass3jours].find(pass => pass.checked);
+
+        if (!selectedPass) {
+            // Handle the case where no pass is selected
+            return;
+        }
+
+        // Get the current price of the selected pass
+        let currentPrice = parseInt(selectedPass.getAttribute('data-price'));
+        console.log(currentPrice); 
+
+        // Calculate total price based on the selected pass
+        let totalPrice = nombrePlaces * currentPrice;
+
+        // Display total price
+        totalPriceElement.textContent = `Prix Total : ${totalPrice}€`;
+    }
 });
+
+
+
+
 
 function checkFormule() {
     // Vérification qu'au moins une case est cochée dans la section "Choisissez votre formule"
