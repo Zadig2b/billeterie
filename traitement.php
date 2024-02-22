@@ -12,7 +12,7 @@ class Traitement {
         $telephone = htmlspecialchars($donnees['telephone']);
         $adressePostale = htmlspecialchars($donnees['adressePostale']);
         $nombrePlaces = $_POST['nombrePlaces'];
-        $tarifReduit = isset($_POST['tarifReduit']) ? $_POST['tarifReduit'] : 'plein tarif'; // Check if it's set
+        $tarifReduit = isset($_POST['tarifReduit']) && $_POST['tarifReduit'] === 'on' ? 'tarifReduit' : 'plein tarif';
         $passSelection = $_POST['passSelection'];
         $prix = $_POST['nombrePlaces'];
         // $PRIX TO UPDATE

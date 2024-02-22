@@ -46,35 +46,64 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function checkFormule() {
     // Vérification qu'au moins une case est cochée dans la section "Choisissez votre formule"
-    var formuleCheckboxes = document.querySelectorAll('#reservation input[name="passSelection"]');
-    var formuleChecked = Array.from(formuleCheckboxes).some(function (checkbox) {
-        return checkbox.checked;
-    });
+    var pass1jourChecked = document.getElementById('pass1jour').checked;
+    var pass2joursChecked = document.getElementById('pass2jours').checked;
+    var pass3joursChecked = document.getElementById('pass3jours').checked;
 
-    // Vérification supplémentaire pour les pass 1 et 2 jours
-    if (formuleChecked) {
-        var pass1jourChecked = document.getElementById('pass1jour').checked;
-        var pass2joursChecked = document.getElementById('pass2jours').checked;
-
-        if ((pass1jourChecked || pass2joursChecked) && !checkJours()) {
-            // Si pass 1 jour ou 2 jours est coché mais les jours ne sont pas sélectionnés
-            alert("Veuillez choisir au moins un jour pour les Pass 1 jour et 2 jours.");
+    if (pass1jourChecked) {
+        document.getElementById('passSelection').value = 'pass1jour';
+        if (!checkJours()) {
+            // Handle the case where the chosen pass requires day selection, but no day is selected
+            alert("Veuillez choisir au moins un jour pour le Pass 1 jour.");
             return false;
         }
+    } else if (pass2joursChecked) {
+        document.getElementById('passSelection').value = 'pass2jours';
+        if (!checkJours()) {
+            // Handle the case where the chosen pass requires day selection, but no day is selected
+            alert("Veuillez choisir au moins un jour pour le Pass 2 jour.");
+            return false;
+        }
+    } else if (pass3joursChecked) {
+        document.getElementById('passSelection').value = 'pass3jours';
+        // No need to check jours for pass3jours
     } else {
-        
+        // No pass selected, handle accordingly
+        alert("n'oubliez pas de choisir au moins une formule");
+        return false;
     }
 
-    return formuleChecked;
+    // Rest of your code
+
+    return true;
 }
+
+
+
+
 
 function checkJours() {
     // Vérification qu'au moins une case est cochée dans la section "Choisissez le jour"
-    var joursCheckboxes = document.querySelectorAll('#pass1jourDate input[name="passSelection"], #pass2joursDate input[name="passSelection"]');
+    var pass1jourChecked = document.getElementById('pass1jour').checked;
+    var pass2joursChecked = document.getElementById('pass2jours').checked;
+
+    var joursCheckboxes;
+
+    if (pass1jourChecked) {
+        joursCheckboxes = document.querySelectorAll('#pass1jourDate input[name="choixJour1"], #pass1jourDate input[name="choixJour2"], #pass1jourDate input[name="choixJour3"]');
+    } else if (pass2joursChecked) {
+        joursCheckboxes = document.querySelectorAll('#pass2joursDate input[name="choixJour12"], #pass2joursDate input[name="choixJour23"]');
+    } else {
+        // No pass selected, handle accordingly
+        alert("n'oubliez pas de choisir au moins une formule");
+        return false;
+    }
+
     return Array.from(joursCheckboxes).some(function (checkbox) {
         return checkbox.checked;
     });
 }
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -112,7 +141,6 @@ function suivant(section) {
             alert("Entrez un nombre de réservation, et n'oubliez pas de choisir au moins une formule");
             return;
         } else if (!formuleValid && validReservation){
-            alert("n'oubliez pas de choisir au moins une formule")
             return;
         } else if (!validReservation && formuleValid){
             alert("Entrez un nombre de réservation")
