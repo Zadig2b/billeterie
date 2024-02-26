@@ -19,7 +19,7 @@ passRadioButtons.forEach(function (radioButton) {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Declare variables in a broader scope
+
     let tarifReduitCheckbox = document.getElementById('tarifReduit');
     let pass1jour = document.getElementById('pass1jour');
     let pass2jours = document.getElementById('pass2jours');
@@ -27,26 +27,21 @@ document.addEventListener('DOMContentLoaded', function () {
     let nombrePlacesInput = document.getElementById('NombrePlaces');
     let totalPriceElement = document.getElementById('totalPrice');
 
-    // Add event listener for "tarifReduit" checkbox change
     tarifReduitCheckbox.addEventListener('change', updatePrices);
 
-    // Add event listeners for pass checkboxes change
     [pass1jour, pass2jours, pass3jours].forEach(function (passCheckbox) {
         passCheckbox.addEventListener('change', updatePrixTotal);
     });
 
     function updatePrices() {
-        // Get the current prices
+
         let prices = tarifReduitCheckbox.checked ? [25, 50, 65] : [40, 70, 100];
     
-        // Update prices and total
         [pass1jour, pass2jours, pass3jours].forEach(function (pass, index) {
             let price = prices[index];
     
-            // Update data-price attribute
             pass.setAttribute('data-price', price);
     
-            // Update displayed prices
             pass.nextElementSibling.textContent = `Pass ${index + 1} jour(s) : ${price}€`;
         });
     
@@ -57,26 +52,24 @@ document.addEventListener('DOMContentLoaded', function () {
     function updatePrixTotal() {
         console.log('updatePrixTotal called'); 
 
-        // Get the number of places
         let nombrePlaces = parseInt(nombrePlacesInput.value) || 0;
 
-        // Get the selected pass element
         let selectedPass = [pass1jour, pass2jours, pass3jours].find(pass => pass.checked);
 
         if (!selectedPass) {
-            // Handle the case where no pass is selected
             return;
         }
 
-        // Get the current price of the selected pass
         let currentPrice = parseInt(selectedPass.getAttribute('data-price'));
         console.log(currentPrice); 
 
-        // Calculate total price based on the selected pass
         let totalPrice = nombrePlaces * currentPrice;
 
-        // Display total price
         totalPriceElement.textContent = `Prix Total : ${totalPrice}€`;
+
+            // Set the calculated total price in the hidden input field
+    document.getElementById('totalPriceInput').value = totalPrice;
+    console.log(totalPrice);
     }
 });
 
@@ -93,6 +86,8 @@ function checkFormule() {
     if (pass1jourChecked) {
         document.getElementById('passSelection').value = 'pass1jour';
         if (!checkJours()) {
+            // Log the state before displaying alert
+            console.log("Before alert: checkJours():", checkJours());
             // Handle the case where the chosen pass requires day selection, but no day is selected
             alert("Veuillez choisir au moins un jour pour le Pass 1 jour.");
             return false;
@@ -100,8 +95,10 @@ function checkFormule() {
     } else if (pass2joursChecked) {
         document.getElementById('passSelection').value = 'pass2jours';
         if (!checkJours()) {
+            // Log the state before displaying alert
+            console.log("Before alert: checkJours():", checkJours());
             // Handle the case where the chosen pass requires day selection, but no day is selected
-            alert("Veuillez choisir au moins un jour pour le Pass 2 jour.");
+            message("Veuillez choisir au moins un jour pour le Pass 2 jour.");
             return false;
         }
     } else if (pass3joursChecked) {
@@ -122,27 +119,36 @@ function checkFormule() {
 
 
 
+
 function checkJours() {
     // Vérification qu'au moins une case est cochée dans la section "Choisissez le jour"
     var pass1jourChecked = document.getElementById('pass1jour').checked;
     var pass2joursChecked = document.getElementById('pass2jours').checked;
 
-    var joursCheckboxes;
+    var joursRadioButtons;
 
     if (pass1jourChecked) {
-        joursCheckboxes = document.querySelectorAll('#pass1jourDate input[name="choixJour1"], #pass1jourDate input[name="choixJour2"], #pass1jourDate input[name="choixJour3"]');
+        joursRadioButtons = document.querySelectorAll('#pass1jourDate input[name="choixJour"]');
     } else if (pass2joursChecked) {
-        joursCheckboxes = document.querySelectorAll('#pass2joursDate input[name="choixJour12"], #pass2joursDate input[name="choixJour23"]');
+        joursRadioButtons = document.querySelectorAll('#pass2joursDate input[name="choixJour"]');
     } else {
         // No pass selected, handle accordingly
         alert("n'oubliez pas de choisir au moins une formule");
         return false;
     }
 
-    return Array.from(joursCheckboxes).some(function (checkbox) {
-        return checkbox.checked;
+    var atLeastOneDaySelected = Array.from(joursRadioButtons).some(function (radio) {
+        return radio.checked;
     });
+    
+    
+    console.log("At least one day selected:", atLeastOneDaySelected);
+    
+
+    return atLeastOneDaySelected;
 }
+
+
 
 
 

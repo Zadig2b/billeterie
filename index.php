@@ -10,6 +10,8 @@
 <p id="totalPrice">Prix Total : </p>
 
   <form action="traitement.php" id="inscription" method="POST">
+  <input type="hidden" name="totalPrice2" id="totalPriceInput" value="">
+
     <fieldset id="reservation" class="active">
       <legend>Réservation</legend>
       <h3>Nombre de réservation(s) :</h3>
@@ -25,14 +27,16 @@
       <label for="pass1jour">Pass 1 jour : 40€</label>
 
       <!-- Si case cochée, afficher le choix du jour -->
-      <section id="pass1jourDate">
-        <input type="checkbox" name="choixJour1" id="choixJour1">
-        <label for="choixJour1">Pass pour la journée du 01/07</label>
-        <input type="checkbox" name="choixJour2" id="choixJour2">
-        <label for="choixJour2">Pass pour la journée du 02/07</label>
-        <input type="checkbox" name="choixJour3" id="choixJour3">
-        <label for="choixJour3">Pass pour la journée du 03/07</label>
-      </section>
+<section id="pass1jourDate">
+    <input type="radio" name="choixJour" id="choixJour1" value="01/07">
+    <label for="choixJour1">Pass pour la journée du 01/07</label>
+
+    <input type="radio" name="choixJour" id="choixJour2" value="02/07" >
+    <label for="choixJour2">Pass pour la journée du 02/07</label>
+
+    <input type="radio" name="choixJour" id="choixJour3" value="03/07" >
+    <label for="choixJour3">Pass pour la journée du 03/07</label>
+</section>
 
       <input type="radio" name="passRadio" id="pass2jours" data-price="70">
       <label for="pass2jours">Pass 2 jours : 70€</label>
@@ -41,9 +45,9 @@
 
       <!-- Si case cochée, afficher le choix des jours -->
       <section id="pass2joursDate">
-        <input type="checkbox" name="choixJour12" id="choixJour12">
+        <input type="radio" name="choixJour" id="choixJour12" value="01/07 et 02/07">
         <label for="choixJour12">Pass pour deux journées du 01/07 au 02/07</label>
-        <input type="checkbox" name="choixJour23" id="choixJour23">
+        <input type="radio" name="choixJour" id="choixJour23" value="02/07 et 03/07">
         <label for="choixJour23">Pass pour deux journées du 02/07 au 03/07</label>
       </section>
 

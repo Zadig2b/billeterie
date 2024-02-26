@@ -21,9 +21,8 @@ session_start(); // Start the session
         // Display reservation details
         echo "<p>Name: {$reservationData[0]} {$reservationData[1]}</p>";
         echo "<p>Email: {$reservationData[2]}</p>";
-        echo "<p>Total Price: {$reservationData[5]}€</p>";
-        // Adjust indices based on the actual order of data in the array
-        // Add more details as needed
+        echo "<p>Nombre de places: {$reservationData[5]}</p>";
+        echo "<p>Prix Total: {$reservationData[8]}</p>";
       } else {
         echo "<p>No reservation data available.</p>";
       }

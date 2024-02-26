@@ -5,22 +5,32 @@ class Traitement {
     public function traiterDonnees($donnees) {
         //  ici, faire le traitement des données avant de les enregistrer
 
-        //nettoyage pour chaque champ 
+        //récupération et nettoyage de chaque champ de "Réservation"
+        $nombrePlaces = $_POST['nombrePlaces'];
+        $tarifReduit = isset($_POST['tarifReduit']) && $_POST['tarifReduit'] === 'on' ? 'tarifReduit' : 'plein tarif';
+        $passSelection = $_POST['passSelection'];
+        $prix = $_POST['totalPrice2'];
+        $choixJour = isset($_POST['choixJour1']) && $_POST['tarifReduit'] === 'on' ? 'tarifReduit' : 'plein tarif';
+
+
+        //récupération et nettoyage de chaque champ de "Réservation"
+
+
+
+        //récupération et nettoyage de chaque champ de Coordonnées
         $nom = htmlspecialchars($donnees['nom']);
         $prenom = htmlspecialchars($donnees['prenom']);
         $email = htmlspecialchars($donnees['email']);
         $telephone = htmlspecialchars($donnees['telephone']);
         $adressePostale = htmlspecialchars($donnees['adressePostale']);
-        $nombrePlaces = $_POST['nombrePlaces'];
-        $tarifReduit = isset($_POST['tarifReduit']) && $_POST['tarifReduit'] === 'on' ? 'tarifReduit' : 'plein tarif';
-        $passSelection = $_POST['passSelection'];
-        $prix = $_POST['nombrePlaces'];
-        // $PRIX TO UPDATE
 
-        var_dump($donnees);
+
+
 
         $reservation = new Reservation();
-        $reservation->enregistrerReservation($nom, $prenom, $email, $telephone, $adressePostale, $nombrePlaces, $tarifReduit, $passSelection, $prix);
+        $reservation->enregistrerReservation(
+            $nom, $prenom, $email, $telephone, $adressePostale, 
+            $nombrePlaces, $tarifReduit, $passSelection, $prix);
         exit; 
     }
 }
