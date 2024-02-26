@@ -65,13 +65,13 @@
     <fieldset id="options" class="inactive">
       <legend>Options</legend>
       <h3>Réserver un emplacement de tente : </h3>
-      <input type="checkbox" id="tenteNuit1" name="tenteNuit1">
+      <input type="checkbox" id="tenteNuit1" name="tenteNuit1" data-price="5">
       <label for="tenteNuit1">Pour la nuit du 01/07 (5€)</label>
-      <input type="checkbox" id="tenteNuit2" name="tenteNuit2">
+      <input type="checkbox" id="tenteNuit2" name="tenteNuit2" data-price="5">
       <label for="tenteNuit2">Pour la nuit du 02/07 (5€)</label>
-      <input type="checkbox" id="tenteNuit3" name="tenteNuit3">
+      <input type="checkbox" id="tenteNuit3" name="tenteNuit3" data-price="5">
       <label for="tenteNuit3">Pour la nuit du 03/07 (5€)</label>
-      <input type="checkbox" id="tente3Nuits" name="tente3Nuits">
+      <input type="checkbox" id="tente3Nuits" name="tente3Nuits" data-price="12">
       <label for="tente3Nuits">Pour les 3 nuits (12€)</label>
 
       <h3>Réserver un emplacement de camion aménagé : </h3>

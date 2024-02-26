@@ -12,17 +12,22 @@ class Traitement {
         $prix = $_POST['totalPrice2'] . "€";
 
 
-        //récupération et nettoyage de chaque champ de "Réservation"
+        //récupération et nettoyage de chaque champ de "Options"
+        // $emplacementTente;
+        // $emplacementCamion;
+        // $enfants;
+        // $casque;
+        // $luges;
 
 
-
-        //récupération et nettoyage de chaque champ de Coordonnées
+        //récupération et nettoyage de chaque champ de "Coordonnées"
         $nom = htmlspecialchars($donnees['nom']);
         $prenom = htmlspecialchars($donnees['prenom']);
         $email = htmlspecialchars($donnees['email']);
         $telephone = htmlspecialchars($donnees['telephone']);
         $adressePostale = htmlspecialchars($donnees['adressePostale']);
         $choixJour = isset($_POST['choixJour']) ? htmlspecialchars($_POST['choixJour']) : '';
+
 
 
 

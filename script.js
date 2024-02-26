@@ -18,8 +18,10 @@ passRadioButtons.forEach(function (radioButton) {
 });
 
 
-document.addEventListener('DOMContentLoaded', function () {
 
+// <--------------------------------DYNAMIC PRICE MANAGEMENT------------------------------------------->
+
+document.addEventListener('DOMContentLoaded', function () {
     let tarifReduitCheckbox = document.getElementById('tarifReduit');
     let pass1jour = document.getElementById('pass1jour');
     let pass2jours = document.getElementById('pass2jours');
@@ -30,11 +32,13 @@ document.addEventListener('DOMContentLoaded', function () {
     tarifReduitCheckbox.addEventListener('change', updatePrices);
 
     [pass1jour, pass2jours, pass3jours].forEach(function (passCheckbox) {
-        passCheckbox.addEventListener('change', updatePrixTotal);
+        passCheckbox.addEventListener('change', function () {
+            updatePrixTotal();
+            updateCheckboxVisibility(getSelectedDay());
+        });
     });
 
     function updatePrices() {
-
         let prices = tarifReduitCheckbox.checked ? [25, 50, 65] : [40, 70, 100];
     
         [pass1jour, pass2jours, pass3jours].forEach(function (pass, index) {
@@ -47,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
     
         updatePrixTotal();
     }
-    
 
     function updatePrixTotal() {
         console.log('updatePrixTotal called'); 
@@ -67,11 +70,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
         totalPriceElement.textContent = `Prix Total : ${totalPrice}€`;
 
-            // Set the calculated total price in the hidden input field
-    document.getElementById('totalPriceInput').value = totalPrice;
-    console.log(totalPrice);
+        // Set the calculated total price in the hidden input field
+        document.getElementById('totalPriceInput').value = totalPrice;
+        console.log(totalPrice);
     }
+
+
 });
+
+// <--------------------------------END OF DYNAMIC PRICE MANAGEMENT------------------------------------------->
 
 
 
