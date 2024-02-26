@@ -6,7 +6,7 @@ session_start();
 
     public function enregistrerReservation(
     $nom, $prenom, $email, $telephone, $adressePostale, 
-    $nombrePlaces, $tarifReduit, $passSelection, $prix) {
+    $nombrePlaces, $tarifReduit, $passSelection, $prix, $choixJour) {
 
 
         // Créer un tableau avec les données de la réservation
@@ -19,7 +19,8 @@ session_start();
             $nombrePlaces,
             $tarifReduit,
             $passSelection,
-            $prix
+            $prix,
+            $choixJour
         );
 
         $_SESSION['reservationData'] = $reservationData;

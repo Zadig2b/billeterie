@@ -9,8 +9,7 @@ class Traitement {
         $nombrePlaces = $_POST['nombrePlaces'];
         $tarifReduit = isset($_POST['tarifReduit']) && $_POST['tarifReduit'] === 'on' ? 'tarifReduit' : 'plein tarif';
         $passSelection = $_POST['passSelection'];
-        $prix = $_POST['totalPrice2'];
-        $choixJour = isset($_POST['choixJour1']) && $_POST['tarifReduit'] === 'on' ? 'tarifReduit' : 'plein tarif';
+        $prix = $_POST['totalPrice2'] . "€";
 
 
         //récupération et nettoyage de chaque champ de "Réservation"
@@ -23,14 +22,14 @@ class Traitement {
         $email = htmlspecialchars($donnees['email']);
         $telephone = htmlspecialchars($donnees['telephone']);
         $adressePostale = htmlspecialchars($donnees['adressePostale']);
-
+        $choixJour = isset($_POST['choixJour']) ? htmlspecialchars($_POST['choixJour']) : '';
 
 
 
         $reservation = new Reservation();
         $reservation->enregistrerReservation(
             $nom, $prenom, $email, $telephone, $adressePostale, 
-            $nombrePlaces, $tarifReduit, $passSelection, $prix);
+            $nombrePlaces, $tarifReduit, $passSelection, $prix, $choixJour);
         exit; 
     }
 }
