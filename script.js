@@ -1,22 +1,66 @@
+// <--------------------------------START OF RADIO LOGIC------------------------------------------->
+
 // Get all radio buttons with the name "passRadio"
 let passRadioButtons = document.querySelectorAll('input[name="passRadio"]');
+let choixJourRadioButtons = document.querySelectorAll('input[name="choixJour"]');
 
 // Add event listeners to each radio button
 passRadioButtons.forEach(function (radioButton) {
     radioButton.addEventListener('change', function () {
+        // Iterate through all radio buttons
+        passRadioButtons.forEach(function (otherRadioButton) {
+            // Get the section ID for the other radio button
+            let otherSectionId = otherRadioButton.id + 'Date';
+            let otherSection = document.getElementById(otherSectionId);
+
+            // Check if the section exists before trying to modify its style
+            if (otherSection) {
+                // Hide the section of the other radio button
+                if (otherRadioButton !== radioButton) {
+                    otherSection.style.display = 'none';
+                }
+            }
+        });
+
+        // Deselect child radio buttons of the previous choice
+        choixJourRadioButtons.forEach(function (childRadioButton) {
+            childRadioButton.checked = false;
+        });
+
+        // Show or hide the section based on the checked state
         let sectionId = radioButton.id + 'Date';
         let section = document.getElementById(sectionId);
 
-        if (radioButton.checked) {
-            section.style.display = 'block';
-        } else {
-            section.style.display = 'none';
+        // Check if the section exists before trying to modify its style
+        if (section) {
+            if (radioButton.checked) {
+                section.style.display = 'block';
+            } else {
+                section.style.display = 'none';
+            }
         }
-
-
     });
 });
+// <--------------------------------END OF RADIO LOGIC------------------------------------------->
 
+
+
+
+// <--------------------------------START OF JS ANIMATION------------------------------------------->
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Au chargement de la page, get 1st section et appliquer fadeIn animation
+    var firstSection = document.querySelector('fieldset');
+    firstSection.classList.add('active');
+
+    // Ajouter event listener pour animationend pour appliquer colorFadeOut après fadeIn
+    firstSection.addEventListener('animationend', function (event) {
+        if (event.animationName === 'fadeIn') {
+            firstSection.style.animation = 'colorFadeOut 2s forwards';
+        }
+    });
+});
+// <--------------------------------END OF JS ANIMATION ------------------------------------------->
 
 
 // <--------------------------------DYNAMIC PRICE MANAGEMENT------------------------------------------->
@@ -77,7 +121,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 });
-
 // <--------------------------------END OF DYNAMIC PRICE MANAGEMENT------------------------------------------->
 
 
@@ -93,19 +136,13 @@ function checkFormule() {
     if (pass1jourChecked) {
         document.getElementById('passSelection').value = 'pass1jour';
         if (!checkJours()) {
-            // Log the state before displaying alert
-            console.log("Before alert: checkJours():", checkJours());
-            // Handle the case where the chosen pass requires day selection, but no day is selected
             alert("Veuillez choisir au moins un jour pour le Pass 1 jour.");
             return false;
         }
     } else if (pass2joursChecked) {
         document.getElementById('passSelection').value = 'pass2jours';
         if (!checkJours()) {
-            // Log the state before displaying alert
-            console.log("Before alert: checkJours():", checkJours());
-            // Handle the case where the chosen pass requires day selection, but no day is selected
-            message("Veuillez choisir au moins un jour pour le Pass 2 jour.");
+            alert("Veuillez choisir au moins un jour pour le Pass 2 jour.");
             return false;
         }
     } else if (pass3joursChecked) {
@@ -122,11 +159,6 @@ function checkFormule() {
     return true;
 }
 
-
-
-
-
-
 function checkJours() {
     // Vérification qu'au moins une case est cochée dans la section "Choisissez le jour"
     var pass1jourChecked = document.getElementById('pass1jour').checked;
@@ -139,7 +171,6 @@ function checkJours() {
     } else if (pass2joursChecked) {
         joursRadioButtons = document.querySelectorAll('#pass2joursDate input[name="choixJour"]');
     } else {
-        // No pass selected, handle accordingly
         alert("n'oubliez pas de choisir au moins une formule");
         return false;
     }
@@ -155,22 +186,6 @@ function checkJours() {
     return atLeastOneDaySelected;
 }
 
-
-
-
-
-document.addEventListener('DOMContentLoaded', function () {
-            // Au chargement de la page, get 1st section et appliquer fadeIn animation
-            var firstSection = document.querySelector('fieldset');
-            firstSection.classList.add('active');
-
-            // Ajouter event listener pour animationend pour appliquer colorFadeOut après fadeIn
-            firstSection.addEventListener('animationend', function (event) {
-                if (event.animationName === 'fadeIn') {
-                    firstSection.style.animation = 'colorFadeOut 2s forwards';
-                }
-            });
-        });
 
 function suivant(section) {
     // Récupérer la section actuelle

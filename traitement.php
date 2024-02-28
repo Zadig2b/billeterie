@@ -10,6 +10,7 @@ class Traitement {
         $tarifReduit = isset($_POST['tarifReduit']) && $_POST['tarifReduit'] === 'on' ? 'tarifReduit' : 'plein tarif';
         $passSelection = $_POST['passSelection'];
         $prix = $_POST['totalPrice2'] . "€";
+        $choixJour = isset($_POST['choixJour']) ? htmlspecialchars($_POST['choixJour']) : '';
 
 
         //récupération et nettoyage de chaque champ de "Options"
@@ -26,7 +27,6 @@ class Traitement {
         $email = htmlspecialchars($donnees['email']);
         $telephone = htmlspecialchars($donnees['telephone']);
         $adressePostale = htmlspecialchars($donnees['adressePostale']);
-        $choixJour = isset($_POST['choixJour']) ? htmlspecialchars($_POST['choixJour']) : '';
 
 
 
