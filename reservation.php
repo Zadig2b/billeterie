@@ -5,10 +5,10 @@ session_start();
     private $csvFile = 'database.csv';
 
     public function enregistrerReservation(
-    $nom, $prenom, $email, $telephone, $adressePostale, 
-    $nombrePlaces, $tarifReduit, $passSelection, $prix, $choixJour) {
-
-
+        $nom, $prenom, $email, $telephone, $adressePostale, 
+        $nombrePlaces, $tarifReduit, $passSelection, $prix, $choixJour,
+        $emplacementTente, $emplacementCamion, $enfants, $nombreCasquesEnfants, $NombreLugesEte
+    ) {
         // Créer un tableau avec les données de la réservation
         $reservationData = array(
             $nom,
@@ -20,7 +20,12 @@ session_start();
             $tarifReduit,
             $passSelection,
             $prix,
-            $choixJour
+            $choixJour,
+            $emplacementTente,
+            $emplacementCamion,
+            $enfants,
+            $nombreCasquesEnfants,
+            $NombreLugesEte
         );
 
         $_SESSION['reservationData'] = $reservationData;

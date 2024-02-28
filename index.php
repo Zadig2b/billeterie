@@ -64,46 +64,49 @@
 
     <!------------------------------------------- FIN DE LA SECTION RESERVATION  ------------------------------------------------>
 
-    <fieldset id="options" class="inactive">
-      <legend>Options</legend>
-      <h3>Réserver un emplacement de tente :</h3>
-      <input type="checkbox" id="tenteNuit1" name="tenteNuit1" data-price="5" data-day="01/07">
-      <label for="tenteNuit1">Pour la nuit du 01/07 (5€)</label>
-      <input type="checkbox" id="tenteNuit2" name="tenteNuit2" data-price="5" data-day="02/07">
-      <label for="tenteNuit2">Pour la nuit du 02/07 (5€)</label>
-      <input type="checkbox" id="tenteNuit3" name="tenteNuit3" data-price="5" data-day="03/07">
-      <label for="tenteNuit3">Pour la nuit du 03/07 (5€)</label>
-      <input type="checkbox" id="tente3Nuits" name="tente3Nuits" data-price="12">
-      <label for="tente3Nuits">Pour les 3 nuits (12€)</label>
+<fieldset id="options" class="inactive">
+<legend>Options</legend>
+<h3>Réserver un emplacement de tente :</h3>
+<input type="checkbox" id="tenteNuit1" name="options[tenteNuit][01/07]" data-price="5">
+<label for="tenteNuit1">Pour la nuit du 01/07 (5€)</label>
+<input type="checkbox" id="tenteNuit2" name="options[tenteNuit][02/07]" data-price="5">
+<label for="tenteNuit2">Pour la nuit du 02/07 (5€)</label>
+<input type="checkbox" id="tenteNuit3" name="options[tenteNuit][03/07]" data-price="5">
+<label for="tenteNuit3">Pour la nuit du 03/07 (5€)</label>
+<input type="checkbox" id="tenteNuits4" name="options[tenteNuit][01/07,02/07,03/07]" data-price="12">
+<label for="tenteNuit4">Pour les 3 nuits (12€)</label>
 
-      <h3>Réserver un emplacement de camion aménagé : </h3>
-      <input type="checkbox" id="vanNuit1" name="vanNuit1">
-      <label for="vanNuit1">Pour la nuit du 01/07 (5€)</label>
-      <input type="checkbox" id="vanNuit2" name="vanNuit2">
-      <label for="vanNuit2">Pour la nuit du 02/07 (5€)</label>
-      <input type="checkbox" id="vanNuit3" name="vanNuit3">
-      <label for="vanNuit3">Pour la nuit du 03/07 (5€)</label>
-      <input type="checkbox" id="van3Nuits" name="van3Nuits">
-      <label for="van3Nuits">Pour les 3 nuits (12€)</label>
+<h3>Réserver un emplacement de camion aménagé : </h3>
+<input type="checkbox" id="vanNuit1" name="options[vanNuit][01/07]" value="01/07" data-price="5">
+<label for="vanNuit1">Pour la nuit du 01/07 (5€)</label>
+<input type="checkbox" id="vanNuit2" name="options[vanNuit][02/07]" value="02/07" data-price="5">
+<label for="vanNuit2">Pour la nuit du 02/07 (5€)</label>
+<input type="checkbox" id="vanNuit3" name="options[vanNuit][03/07]" value="03/07" data-price="5">
+<label for="vanNuit3">Pour la nuit du 03/07 (5€)</label>
+<input type="checkbox" id="vanNuits4" name="options[vanNuit][01/07,02/07,03/07]" value="01/07,02/07,03/07" data-price="12">
+<label for="vanNuits4">Pour les 3 nuits (12€)</label>
 
-      <h3>Venez-vous avec des enfants ?</h3>
-      <input type="checkbox" name="enfantsOui"><label for="enfantsOui">Oui</label>
-      <input type="checkbox" name="enfantsNon"><label for="enfantsNon">Non</label>
 
-      <!-- Si oui, afficher : -->
-      <section>
+
+    <h3>Venez-vous avec des enfants ?</h3>
+    <input type="checkbox" name="options[enfantsOui]"><label for="enfantsOui">Oui</label>
+    <input type="checkbox" name="options[enfantsNon]"><label for="enfantsNon">Non</label>
+
+    <!-- Si oui, afficher : -->
+    <section>
         <h4>Voulez-vous louer un casque antibruit pour enfants* (2€ / casque) ?</h4>
-        <label for="nombreCasquesEnfants">Nombre de casques souhaités :</label>
-        <input type="number" name="nombreCasquesEnfants" id="nombreCasquesEnfants">
+        <label for="options[nombreCasquesEnfants]">Nombre de casques souhaités :</label>
+        <input type="number" name="options[nombreCasquesEnfants]" id="options[nombreCasquesEnfants]">
         <p>*Dans la limite des stocks disponibles.</p>
-      </section>
+    </section>
 
-      <h3>Profitez de descentes en luge d'été à tarifs avantageux !</h3>
-      <label for="NombreLugesEte">Nombre de descentes en luge d'été :</label>
-      <input type="number" name="NombreLugesEte" id="NombreLugesEte">
+    <h3>Profitez de descentes en luge d'été à tarifs avantageux !</h3>
+    <label for="options[NombreLugesEte]">Nombre de descentes en luge d'été :</label>
+    <input type="number" name="options[NombreLugesEte]" id="options[NombreLugesEte]">
 
-      <p class="bouton" onclick="suivant('coordonnees')">Suivant</p>
-    </fieldset>
+    <p class="bouton" onclick="suivant('coordonnees')">Suivant</p>
+</fieldset>
+
 
         <!------------------------------------------- FIN DE LA SECTION OPTIONS  ------------------------------------------------>
 

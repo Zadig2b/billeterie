@@ -13,12 +13,19 @@ class Traitement {
         $choixJour = isset($_POST['choixJour']) ? htmlspecialchars($_POST['choixJour']) : '';
 
 
-        //récupération et nettoyage de chaque champ de "Options"
-        // $emplacementTente;
-        // $emplacementCamion;
-        // $enfants;
-        // $casque;
-        // $luges;
+// Retrieve and sanitize the values for each option
+$options = isset($_POST['options']) ? $_POST['options'] : [];
+
+$emplacementTente = isset($options['tenteNuit']) ? 'Tente: ' . implode(', ', array_keys($options['tenteNuit'])) : '';
+$emplacementCamion = isset($options['vanNuit']) ? 'Van: ' . implode(', ', array_keys(array_filter($options['vanNuit']))) : '';
+$enfants = isset($options['enfantsOui']) ? 'Enfants' : "Pas d'enfants";
+$nombreCasquesEnfants = isset($options['nombreCasquesEnfants']) && !empty($options['nombreCasquesEnfants'])
+    ? htmlspecialchars($options['nombreCasquesEnfants']) . " Casque(s)"
+    : '';
+
+$NombreLugesEte = isset($options['NombreLugesEte']) && !empty($options['NombreLugesEte'])
+    ? htmlspecialchars($options['NombreLugesEte']) . " luge(s)"
+    : '';
 
 
         //récupération et nettoyage de chaque champ de "Coordonnées"
@@ -34,7 +41,10 @@ class Traitement {
         $reservation = new Reservation();
         $reservation->enregistrerReservation(
             $nom, $prenom, $email, $telephone, $adressePostale, 
-            $nombrePlaces, $tarifReduit, $passSelection, $prix, $choixJour);
+            $nombrePlaces, $tarifReduit, $passSelection, $prix, $choixJour,
+            $emplacementTente, $emplacementCamion, $enfants, $nombreCasquesEnfants, $NombreLugesEte
+        );
+        
         exit; 
     }
 }
