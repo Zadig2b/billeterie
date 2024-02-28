@@ -7,7 +7,7 @@ class Traitement {
 
         //récupération et nettoyage de chaque champ de "Réservation"
         $nombrePlaces = $_POST['nombrePlaces'];
-        $tarifReduit = isset($_POST['tarifReduit']) && $_POST['tarifReduit'] === 'on' ? 'tarifReduit' : 'plein tarif';
+        $tarifReduit = isset($_POST['tarifReduit']) && $_POST['tarifReduit'] === 'on' ? 'tarif réduit' : 'plein tarif';
         $passSelection = $_POST['passSelection'];
         $prix = $_POST['totalPrice2'] . "€";
         $choixJour = isset($_POST['choixJour']) ? htmlspecialchars($_POST['choixJour']) : '';

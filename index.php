@@ -53,6 +53,8 @@
 
       <input type="radio" name="passRadio" id="pass3jours" data-price="100">
       <label for="pass3jours">Pass 3 jours : 100€</label>
+      <input type="hidden" name="choixJour" id="choixJour123" value="du 01/07 au 03/07">
+
 
 
       <!-- FACULTATIF : ajouter un pass groupe (5 adultes : 150€ / jour) uniquement pass 1 jour -->
@@ -64,12 +66,12 @@
 
     <fieldset id="options" class="inactive">
       <legend>Options</legend>
-      <h3>Réserver un emplacement de tente : </h3>
-      <input type="checkbox" id="tenteNuit1" name="tenteNuit1" data-price="5">
+      <h3>Réserver un emplacement de tente :</h3>
+      <input type="checkbox" id="tenteNuit1" name="tenteNuit1" data-price="5" data-day="01/07">
       <label for="tenteNuit1">Pour la nuit du 01/07 (5€)</label>
-      <input type="checkbox" id="tenteNuit2" name="tenteNuit2" data-price="5">
+      <input type="checkbox" id="tenteNuit2" name="tenteNuit2" data-price="5" data-day="02/07">
       <label for="tenteNuit2">Pour la nuit du 02/07 (5€)</label>
-      <input type="checkbox" id="tenteNuit3" name="tenteNuit3" data-price="5">
+      <input type="checkbox" id="tenteNuit3" name="tenteNuit3" data-price="5" data-day="03/07">
       <label for="tenteNuit3">Pour la nuit du 03/07 (5€)</label>
       <input type="checkbox" id="tente3Nuits" name="tente3Nuits" data-price="12">
       <label for="tente3Nuits">Pour les 3 nuits (12€)</label>
