@@ -1,0 +1,94 @@
+main {
+  display: flex;
+}
+
+#colonne {
+  background-color: teal;
+  width: 250px;
+  height: calc(100vh - 100px);
+  color: white;
+  box-shadow: 3px 0px 5px gray;
+  padding: 20px 20px 20px 30px;
+  position: fixed;
+}
+
+ul {
+  padding-left: 15px;
+}
+li:hover, .actif {
+  background-color: rgb(0, 99, 95);
+  border-radius: 10px;
+}
+li {
+  list-style: none;
+  transition: 0.3s;
+  padding: 1px 0px 7px 0;
+  margin: 5px 0;
+  cursor: pointer;
+}
+.compte:before {
+  content: '🔧';
+  font-size: 25px;
+}
+.abonnements:before {
+  content: '📬';
+  font-size: 25px;
+}
+.admin:before {
+  content: '🏠';
+  font-size: 25px;
+}
+.utilisateurs:before {
+  content: '👪';
+  font-size: 25px;
+}
+.retour::before {
+  content: '↩';
+  font-size: 25px;
+  margin-right: 12px;
+  position: relative;
+  top: 5px;
+}
+
+
+
+.content {
+  width: 100%;
+  margin: 20px 50px 50px 320px;
+}
+
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+  margin: 5px 10px;
+}
+
+.column span {
+  margin: 5px;
+}
+
+
+.tableau-utilisateurs {
+  width: 100%;
+}
+
+button {
+  font-family: inherit;
+  background-color: darkred;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+button:hover {
+  box-shadow: 2px 2px 5px grey;
+}
+
+.infos-compte button {
+  margin-top: 20px;
+  margin-left:15px;
+}

@@ -1,0 +1,22 @@
+.tableau-utilisateurs {
+  width: 100%;
+  border-collapse: collapse;
+}
+thead {
+  background-color: grey;
+  color: white;
+}
+thead th {
+  border: 1px solid white;
+  padding: 10px;
+}
+
+tbody td {
+  padding: 5px;
+  border: 1px solid grey;
+}
+
+tbody td:last-child {
+  width: 130px;
+  text-align: center;
+}

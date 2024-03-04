@@ -1,3 +1,21 @@
+<?php
+session_start();
+
+if (isset($_SESSION['connecté']) && !empty($_SESSION['user'])) {
+  // abort
+  header('location:tableau-de-bord.php');
+  die;
+}
+
+$code_erreur = null;
+if (isset($_GET['erreur'])) {
+  $code_erreur = (int) $_GET['erreur'];
+}
+
+
+include "includes/header.php";
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -133,3 +151,6 @@
 <script src="./script.js"></script>
 </html>
 
+<?php
+include "includes/footer.php";
+?>
