@@ -34,13 +34,15 @@ switch ($url) {
 <body>
 
   <div id="header">
-    <div class="logo">LOGO.</div>
+    <div class="logo">Vercors Music Festival</div>
     <div>
       <?php if (isset($_SESSION['connecté'])) { ?>
         <a href="deconnexion.php">Déconnexion</a>
       <?php } else { ?>
-        <a href="index.php">Inscription</a>
+        <a href="inscription.php">inscription</a>
+        <a href="index.php">Réservation</a>
         <a href="connexion.php">Connexion</a>
+        <a href="admin.php">Admin</a>
       <?php } ?>
     </div>
   </div>

@@ -47,13 +47,13 @@ include "includes/header.php";
       <!-- Si case cochée, afficher le choix du jour -->
 <section id="pass1jourDate">
     <input type="radio" name="choixJour" id="choixJour1" value="01/07">
-    <label for="choixJour1">Pass pour la journée du 01/07</label>
+    <label for="choixJour1">01/07</label>
 
     <input type="radio" name="choixJour" id="choixJour2" value="02/07" >
-    <label for="choixJour2">Pass pour la journée du 02/07</label>
+    <label for="choixJour2">02/07</label>
 
     <input type="radio" name="choixJour" id="choixJour3" value="03/07" >
-    <label for="choixJour3">Pass pour la journée du 03/07</label>
+    <label for="choixJour3">03/07</label>
 </section>
 
       <input type="radio" name="passRadio" id="pass2jours" data-price="70">
@@ -64,9 +64,9 @@ include "includes/header.php";
       <!-- Si case cochée, afficher le choix des jours -->
       <section id="pass2joursDate">
         <input type="radio" name="choixJour" id="choixJour12" value="01/07 et 02/07">
-        <label for="choixJour12">Pass pour deux journées du 01/07 au 02/07</label>
+        <label for="choixJour12">du 01/07 au 02/07</label>
         <input type="radio" name="choixJour" id="choixJour23" value="02/07 et 03/07">
-        <label for="choixJour23">Pass pour deux journées du 02/07 au 03/07</label>
+        <label for="choixJour23">du 02/07 au 03/07</label>
       </section>
 
       <input type="radio" name="passRadio" id="pass3jours" data-price="100">

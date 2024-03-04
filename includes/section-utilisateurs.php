@@ -1,4 +1,5 @@
 <?php
+include_once 'reservation.php';
 ?>
 <table class="tableau-utilisateurs">
   <caption><h1>Liste des utilisateurs</h1></caption>
@@ -23,5 +24,10 @@
         <td><button onclick="location.href='src/suppression?suppression=<?= $utilisateur->getId() ?>'">🗑️ Supprimer</button></td>
       </tr>
     <?php } ?>
+    
   </tbody>
 </table>
+
+<?php
+$reservation->getAllReservations();
+?>
