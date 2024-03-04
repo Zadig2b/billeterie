@@ -1,5 +1,22 @@
 // <--------------------------------START OF RADIO LOGIC------------------------------------------->
 
+document.addEventListener('DOMContentLoaded', function () {
+    // Récupérer l'élément input pour le nombre de réservations
+    let nombrePlacesInput = document.getElementById('NombrePlaces');
+
+    // Ajouter un écouteur d'événements sur le changement de la valeur du champ
+    nombrePlacesInput.addEventListener('change', function () {
+        // Récupérer la valeur saisie par l'utilisateur
+        let nombrePlaces = parseInt(nombrePlacesInput.value);
+
+        // Limiter la valeur à 50 si elle est supérieure à 50
+        if (nombrePlaces > 50 || nombrePlaces <= 1) {
+            nombrePlacesInput.value = 1;
+            alert("Le nombre de réservations ne peut pas être inférieur à 1 ou supérieur à 50.");
+        }
+    });
+});
+
 // Get all radio buttons with the name "passRadio"
 let passRadioButtons = document.querySelectorAll('input[name="passRadio"]');
 let choixJourRadioButtons = document.querySelectorAll('input[name="choixJour"]');
