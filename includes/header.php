@@ -39,9 +39,7 @@ switch ($url) {
       <?php if (isset($_SESSION['connecté'])) { ?>
         <a href="deconnexion.php">Déconnexion</a>
       <?php } else { ?>
-        <a href="inscription.php">inscription</a>
         <a href="index.php">Réservation</a>
-        <a href="connexion.php">Connexion</a>
         <a href="admin.php">Admin</a>
       <?php } ?>
     </div>

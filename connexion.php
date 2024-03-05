@@ -1,40 +1,54 @@
 <?php
 session_start();
 
+// Vérifiez si l'utilisateur est déjà connecté, auquel cas redirigez-le vers la page admin
 if (isset($_SESSION['connecté']) && !empty($_SESSION['user'])) {
-  // abort
-  header('location:tableau-de-bord.php');
-  die;
+  header('location:admin.php');
+  exit;
 }
 
-$succes = null;
-$echec = null;
-if (isset($_GET['succes']) && $_GET['succes'] === "inscription") {
-  $succes = true;
-}
-if (isset($_GET['erreur'])) {
-  $echec = true;
+// Vérifiez si le formulaire de connexion a été soumis
+if (isset($_POST['password'])) {
+  // Vérifiez le mot de passe
+  $password = $_POST['password'];
+  // Vérifiez si le mot de passe est correct
+  if ($password == "macrondémission") {
+    // Mot de passe correct, marquez l'utilisateur comme connecté
+    $_SESSION['connecté'] = true;
+    $_SESSION['user'] = 'admin'; // Vous pouvez stocker des informations supplémentaires sur l'utilisateur si nécessaire
+    // Redirigez l'utilisateur vers la page admin
+    header('location:admin.php');
+    exit;
+  } else {
+    // Mot de passe incorrect
+    $erreur = "Mot de passe incorrect";
+  }
 }
 
+// Inclure le fichier d'en-tête
 include "includes/header.php";
 ?>
-  <form action="src/authentication.php" method="post" onsubmit=" return ValidationConnexion()">
-    <h1>Connexion</h1>
-    <?php if ($succes) { ?>
-      <div class="message succes">
-        Votre inscription est validée !
-      </div>
-    <?php } ?>
-    <label for="mail">Mail :</label>
-    <input type="email" name="mail" id="mail" required>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexion Admin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Connexion Admin</h1>
+  <?php if (isset($erreur)) { ?>
+    <p style="color: red;"><?php echo $erreur; ?></p>
+  <?php } ?>
+  <form action="connexion.php" method="post">
     <label for="password">Mot de passe :</label>
     <input type="password" name="password" id="password" required>
-    <div id="message"></div>
-    <?php if ($echec) { ?>
-      <div class="message echec">
-        Mot de passe ou email invalide.
-      </div>
-    <?php } ?>
-    <input type="submit" value="Se connecter">
+    <button type="submit">Connexion</button>
   </form>
-  </html>
+</body>
+</html>
+
+<?php
+?>

@@ -152,5 +152,4 @@ include "includes/header.php";
 </html>
 
 <?php
-include "includes/footer.php";
 ?>
