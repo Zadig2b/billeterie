@@ -1,38 +1,60 @@
 <?php
 session_start();
 
-if (isset($_SESSION['connecté']) && !empty($_SESSION['user'])) {
-  // abort
-  header('location:tableau-de-bord.php');
-  die;
+// Vérifie si l'utilisateur est connecté, sinon redirige vers la page de connexion
+if (!isset($_SESSION['connecté']) || empty($_SESSION['user'])) {
+  header('location:connexion.php');
+  exit;
 }
 
-$succes = null;
-$echec = null;
-if (isset($_GET['succes']) && $_GET['succes'] === "inscription") {
-  $succes = true;
-}
-if (isset($_GET['erreur'])) {
-  $echec = true;
-}
-
+// Lecture du fichier CSV et affichage des données
 include "includes/header.php";
 ?>
-  <form action="src/authentication.php" method="post" onsubmit=" return ValidationConnexion()">
-    <h1>Connexion</h1>
-    <?php if ($succes) { ?>
-      <div class="message succes">
-        Votre inscription est validée !
-      </div>
-    <?php } ?>
-    <label for="password">Mot de passe :</label>
-    <input type="password" name="password" id="password" required>
-    <div id="message"></div>
-    <?php if ($echec) { ?>
-      <div class="message echec">
-        Mot de passe invalide.
-      </div>
-    <?php } ?>
-    <input type="submit" value="Se connecter">
-  </form>
-  </html>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste des réservations - Page Admin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Liste des réservations</h1>
+  <table border="1">
+    <tr>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>E-mail</th>
+      <th>Téléphone</th>
+      <th>Adresse</th>
+      <th>Nombre de résérvations</th>
+      <th>Tarif</th>
+      <th>Pass</th>
+      <th>Prix</th>
+      <th>Date(s)</th>
+      <!-- Ajoutez d'autres en-têtes de colonnes si nécessaire -->
+    </tr>
+    <?php
+    // Lecture du fichier CSV
+    $file = 'database.csv';
+    if (($handle = fopen($file, 'r')) !== false) {
+      while (($data = fgetcsv($handle, 1000, ',')) !== false) {
+        echo '<tr>';
+        foreach ($data as $value) {
+          echo '<td>' . htmlspecialchars($value) . '</td>';
+        }
+        echo '</tr>';
+      }
+      fclose($handle);
+    } else {
+      echo '<tr><td colspan="3">Aucune réservation trouvée.</td></tr>';
+    }
+    ?>
+  </table>
+</body>
+</html>
+
+<?php
+include "includes/footer.php";
+?>
