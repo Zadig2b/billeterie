@@ -13,8 +13,8 @@ class Traitement {
         $choixJour = isset($_POST['choixJour']) ? htmlspecialchars($_POST['choixJour']) : '';
 
 
-// Retrieve and sanitize the values for each option
-$options = isset($_POST['options']) ? $_POST['options'] : [];
+        //récupération et nettoyage de chaque champ de "Options"
+        $options = isset($_POST['options']) ? $_POST['options'] : [];
 
 $emplacementTente = isset($options['tenteNuit']) ? 'Tente: ' . implode(', ', array_keys($options['tenteNuit'])) : '';
 $emplacementCamion = isset($options['vanNuit']) ? 'Van: ' . implode(', ', array_keys(array_filter($options['vanNuit']))) : '';

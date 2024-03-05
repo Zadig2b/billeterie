@@ -9,46 +9,37 @@ document.addEventListener('DOMContentLoaded', function () {
         // Récupérer la valeur saisie par l'utilisateur
         let nombrePlaces = parseInt(nombrePlacesInput.value);
 
-        // Limiter la valeur à 50 si elle est supérieure à 50
-        if (nombrePlaces > 50 || nombrePlaces <= 1) {
+
+        if ( nombrePlaces <0 ) {
             nombrePlacesInput.value = 1;
-            alert("Le nombre de réservations ne peut pas être inférieur à 1 ou supérieur à 50.");
+            alert("Le nombre de réservations ne peut pas être inférieur à 0");
         }
     });
 });
 
-// Get all radio buttons with the name "passRadio"
 let passRadioButtons = document.querySelectorAll('input[name="passRadio"]');
 let choixJourRadioButtons = document.querySelectorAll('input[name="choixJour"]');
 
-// Add event listeners to each radio button
 passRadioButtons.forEach(function (radioButton) {
     radioButton.addEventListener('change', function () {
-        // Iterate through all radio buttons
         passRadioButtons.forEach(function (otherRadioButton) {
-            // Get the section ID for the other radio button
             let otherSectionId = otherRadioButton.id + 'Date';
             let otherSection = document.getElementById(otherSectionId);
 
-            // Check if the section exists before trying to modify its style
             if (otherSection) {
-                // Hide the section of the other radio button
                 if (otherRadioButton !== radioButton) {
                     otherSection.style.display = 'none';
                 }
             }
         });
 
-        // Deselect child radio buttons of the previous choice
         choixJourRadioButtons.forEach(function (childRadioButton) {
             childRadioButton.checked = false;
         });
 
-        // Show or hide the section based on the checked state
         let sectionId = radioButton.id + 'Date';
         let section = document.getElementById(sectionId);
 
-        // Check if the section exists before trying to modify its style
         if (section) {
             if (radioButton.checked) {
                 section.style.display = 'block';
