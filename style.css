@@ -1,0 +1,115 @@
+input[type="radio"] {
+  display: none; /* Hide the actual radio buttons */
+}
+
+label {
+  cursor: pointer;
+}
+
+label.selected {
+  font-weight: bold; /* Make the selected label bold */
+}
+
+body {
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+/* input[type=checkbox] {
+    display: none;
+}
+
+label {
+    border: 2px solid black;
+} */
+.bouton {
+    border: 2px solid black;
+    width: fit-content;
+    padding: 20px;
+    background-color: white;
+    font-weight: bold;
+
+}
+
+.bouton:hover {
+cursor: pointer;
+
+}
+
+legend {
+    font-weight: bold;
+    border: 2px solid black;
+    background-color: white;
+}
+  
+fieldset.inactive {
+    opacity: 0;
+    display: none; 
+    animation: fadeOut 2s forwards;
+}
+
+
+fieldset.active {
+    opacity: 1;
+     display: flex;
+    flex-direction: column;  
+    align-items: center; 
+    animation: fadeIn 2s forwards, colorFadeIn 2s forwards;
+
+}
+
+@keyframes colorFadeIn {
+    from {
+        background-color: brown;
+    }
+
+    to {
+        background-color: rgb(192, 168, 168);
+    }
+}
+
+@keyframes colorFadeOut {
+    from {
+        background-color: rgb(192, 168, 168);
+    }
+
+    to {
+        background-color: rgb(117, 194, 128);
+
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+
+    }
+}
+
+#pass1jourDate {
+    display: none;
+}
+
+#pass2joursDate {
+    display: none;
+}
+
+#tarifReduit-section {
+    display: none;
+}
