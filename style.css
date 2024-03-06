@@ -1,8 +1,11 @@
 body {
+    
     font-size: large;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 }
+
+
 
 /* input[type=checkbox] {
     display: none;
@@ -40,9 +43,6 @@ fieldset.inactive {
 
 fieldset.active {
     opacity: 1;
-    /* display: flex;
-    flex-direction: column;  
-    align-items: center; */
     animation: fadeIn 2s forwards, colorFadeIn 2s forwards;
 
 }
